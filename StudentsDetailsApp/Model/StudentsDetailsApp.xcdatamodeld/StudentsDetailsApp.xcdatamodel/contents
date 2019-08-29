@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14490.98" systemVersion="18G87" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="AddedStudent" representedClassName="AddedStudent" syncable="YES" codeGenerationType="class">
+        <attribute name="nameAdded" attributeType="String" syncable="YES"/>
+        <relationship name="studentadded" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudentsList" inverseName="studentslist" inverseEntity="StudentsList" syncable="YES"/>
+    </entity>
+    <entity name="StudentDetails" representedClassName="StudentDetails" syncable="YES" codeGenerationType="class">
+        <attribute name="studentName" attributeType="String" syncable="YES"/>
+        <relationship name="detail" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="StudentsList" inverseName="studentdetail" inverseEntity="StudentsList" syncable="YES"/>
+    </entity>
+    <entity name="StudentsList" representedClassName="StudentsList" syncable="YES" codeGenerationType="class">
+        <attribute name="data" attributeType="Boolean" usesScalarValueType="YES" syncable="YES"/>
+        <attribute name="name" attributeType="String" syncable="YES"/>
+        <relationship name="studentdetail" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="StudentDetails" inverseName="detail" inverseEntity="StudentDetails" syncable="YES"/>
+        <relationship name="studentslist" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="AddedStudent" inverseName="studentadded" inverseEntity="AddedStudent" syncable="YES"/>
+    </entity>
+    <elements>
+        <element name="StudentsList" positionX="-134.32421875" positionY="-141.29296875" width="128" height="103"/>
+        <element name="AddedStudent" positionX="129.671875" positionY="-176.5625" width="128" height="73"/>
+        <element name="StudentDetails" positionX="124.39453125" positionY="-30.46875" width="128" height="73"/>
+    </elements>
+</model>
