@@ -12,11 +12,18 @@ import Firebase
 import SVProgressHUD
 
 class StudentsListTableViewController: UITableViewController {
-    var data1 : String = ""
+    
+    var data1 : String = "" {
+        didSet {
+            
+        }
+    }
+    
+    var fecthedData = [data1]()
     var studentDatas = [StudentsList]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
     
-    var selectedCategory = AddedStudent?.self {
+    var selectedCategory = AddedStudent() {
         didSet {
             fetchData()
         }
@@ -24,8 +31,9 @@ class StudentsListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        fetchData()
+       
         print(FileManager.default.urls(for: .documentDirectory, in: .userDomainMask))
+         fetchData()
        
         
     }
@@ -47,12 +55,12 @@ class StudentsListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "nameCell", for: indexPath)
 cell.textLabel?.text = studentDatas[indexPath.row].name
-//        if studentDatas[indexPath.row].data == true {
-//            cell.accessoryType = .checkmark
-//        }else {
-//            cell.accessoryType = .none
-//        }
-//
+        if studentDatas[indexPath.row].data == true {
+            cell.accessoryType = .checkmark
+        }else {
+            cell.accessoryType = .none
+        }
+
         return cell
     }
     
@@ -100,7 +108,7 @@ cell.textLabel?.text = studentDatas[indexPath.row].name
 
     
     func fetchData(with request : NSFetchRequest<StudentsList> = StudentsList.fetchRequest(),predicate: NSPredicate? = nil ) {
-        let categoryPredicate = NSPredicate(format: "studentslist.name MATCHES %@", selectedCategory. )
+        let categoryPredicate = NSPredicate(format: "studentslist.nameAdded MATCHES %@", selectedCategory.nameAdded! )
         if let additionPredicate = predicate {
             request.predicate = NSCompoundPredicate(andPredicateWithSubpredicates: [categoryPredicate,additionPredicate])
             

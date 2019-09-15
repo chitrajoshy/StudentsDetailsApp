@@ -25,7 +25,7 @@ class AddStudentsViewController: UIViewController {
             let obj1 = segue.destination as!
                 StudentsListTableViewController
             
-            obj1.data1 = txtName.text!
+            obj1.data1 = "Data recieved"
             
             
             
