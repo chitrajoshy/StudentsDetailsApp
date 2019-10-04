@@ -7,7 +7,7 @@
 //
 
 import UIKit
-import CoreData
+import RealmSwift
 import Firebase
 import SVProgressHUD
 
@@ -18,7 +18,6 @@ class StudentsListTableViewController: UITableViewController {
             
         }
     }
-    
     var fecthedData = [data1]()
     var studentDatas = [StudentsList]()
     let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
